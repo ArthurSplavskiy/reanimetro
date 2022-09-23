@@ -1,0 +1,11 @@
+{
+ "extends": "stylelint-config-standard-scss",
+ "rules": {
+   "string-quotes": "double",
+   "indentation": [
+		"tab"
+	],
+	"color-hex-case": "upper",
+	"declaration-block-no-redundant-longhand-properties": null
+  }
+}

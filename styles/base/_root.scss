@@ -1,0 +1,24 @@
+html {
+	font-size: var(--defaultFontSize) + px;
+	line-height: 1.38;
+}
+
+html,
+body,
+#root,
+#__next {
+	height: 100%;
+	min-height: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	background-color: var(--white);
+	color: var(--black);
+	overflow: hidden;
+}

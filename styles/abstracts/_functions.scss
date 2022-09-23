@@ -1,0 +1,27 @@
+@use 'sass:math';
+
+$z-indexes: ('menu', 'wrapper');
+
+@function z($name) {
+	@if index($z-indexes, $name) {
+		@return (length($z-indexes) - index($z-indexes, $name)) + 1;
+	} @else {
+		@warn 'There is no item "#{$name}" in this list; Chose one of: #{$z-indexes}';
+		@return null;
+	}
+}
+
+@function percent($px, $from) {
+	$result: math.div($px, $from) * 100%;
+	@return $result;
+}
+
+@function rem($px) {
+	$result: math.div($px, var(--defaultFontSize)) + rem;
+	@return $result;
+}
+
+@function em($px, $current: var(--defaultFontSize)) {
+	$result: math.div($px, $current) + em;
+	@return $result;
+}

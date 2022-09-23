@@ -1,0 +1,49 @@
+*,
+*:after,
+*:before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+	scroll-behavior: smooth;
+}
+
+::selection {
+	background-color: var(--black);
+	color: var(--white);
+}
+::-moz-selection {
+	background-color: var(--black);
+	color: var(--white);
+}
+
+a {
+	text-decoration: none;
+}
+
+a,
+button {
+	cursor: pointer;
+	text-decoration: inherit;
+	color: unset;
+	background: inherit;
+}
+
+ul {
+	list-style-type: none;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}
+
+@media (inverted-colors) {
+	img,
+	video {
+		filter: invert(100%);
+	}
+}

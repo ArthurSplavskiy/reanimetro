@@ -1,0 +1,38 @@
+.TopLine {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+}
+
+.MenuButton {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 3.5rem;
+	height: 3.5rem;
+
+	position: relative;
+	padding: 1rem;
+
+	border-radius: 100%;
+	background: rgba(white, 0.2);
+	backdrop-filter: blur(2px);
+
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		height: 2px;
+		background: var(--white);
+	}
+	&:before {
+		width: 1.5rem;
+		margin-bottom: 4px;
+	}
+	&:after {
+		width: 0.875rem;
+	}
+}

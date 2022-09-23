@@ -1,0 +1,23 @@
+@use '../../styles/abstracts/functions' as *;
+
+.Menu {
+	position: fixed;
+	inset: 0 0 0 0;
+	z-index: z('menu');
+	display: flex;
+}
+
+.MenuBackdrop {
+	width: 100%;
+	background: rgba(var(--black), 0.6);
+}
+
+.MenuContent {
+	width: 372px;
+	padding: 166px var(--side-offset) 166px 40px;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	background: var(--black-100);
+}

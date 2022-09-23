@@ -1,0 +1,23 @@
+:root {
+	--firsneueFont: 'Firsneue';
+	--defaultFontSize: 16;
+
+	--top-line: inset 0px 1px 0px #e6e6e6;
+	--bottom-line: inset 0px -1px 0px #e6e6e6;
+	--right-line: inset -1px 0 0px #ededf0;
+
+	--light-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.08);
+	--dark-shadow: 0 1px 6px rgba(0, 0, 0, 0.09), 0 2px 32px rgba(0, 0, 0, 0.15);
+
+	--transition: cubic-bezier(0.19, 1, 0.22, 1);
+
+	--side-offset: 5.25rem;
+
+	--white: #ffffff;
+	--white-100: #c4c4c4;
+	--black: #000000;
+	--black-100: #111111;
+
+	--blue: #349eb5;
+	--red: #e25b61;
+}
