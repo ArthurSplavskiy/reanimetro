@@ -20,6 +20,7 @@ const Layout = ({children}: LayoutProps): JSX.Element => {
 				tabIndex={0}
 				role="main"
 			>
+				<div></div>
 				{children}
 			</main>
 			<BottomLine className={styles.BottomLine} />
