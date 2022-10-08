@@ -1,2 +1,1 @@
-export * from './Footer/Footer';
-export * from './Cardiograma/Cardiograma';
+export * from './Tip/Tip';

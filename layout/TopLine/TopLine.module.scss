@@ -1,15 +1,41 @@
+@use '../../styles/abstracts/functions' as *;
+
 .TopLine {
-	display: flex;
-	justify-content: space-between;
+	position: fixed;
+	top: 1.125rem;
+	left: var(--side-offset);
+	right: var(--side-offset);
+	z-index: z('header');
+}
+
+.TopLineContent {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 
 	width: 100%;
+}
+
+.SoundSwitch {
+	transform: scale(0);
+	opacity: 0;
+	transition: all 0.8s ease-out;
+	&.SoundSwitchShow {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.Title {
+	justify-self: center;
+	text-align: center;
 }
 
 .MenuButton {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	justify-self: end;
 
 	width: 3.5rem;
 	height: 3.5rem;
@@ -21,12 +47,22 @@
 	background: rgba(white, 0.2);
 	backdrop-filter: blur(2px);
 
+	opacity: 0;
+	transform: scale(0);
+	transition: all 0.8s ease-out;
+
+	&:hover {
+		background: rgba(white, 0.4);
+	}
+
 	&:before,
 	&:after {
 		content: '';
 		display: block;
 		height: 2px;
 		background: var(--white);
+		transition: var(--transition);
+		opacity: 0;
 	}
 	&:before {
 		width: 1.5rem;
@@ -34,5 +70,35 @@
 	}
 	&:after {
 		width: 0.875rem;
+	}
+
+	&.close {
+		&:after {
+			width: 1.5rem;
+			transform: rotate(45deg) translate(-2px, -2px)!important;
+		}
+		&:before {
+			transform: rotate(-45deg) translate(-2px, 2px)!important;
+		}
+	}
+
+	.SoundSwitchShow {
+		transform: scale(1);
+	}
+	&.MenuButtonShow {
+		opacity: 1;
+		transform: scale(1);
+		&:before, &:after {
+			animation: scaleLine 0.6s ease-out 0.5s forwards;
+		}
+	}
+	@keyframes scaleLine {
+		from {
+			clip-path: inset(0 100% 0 0);
+		}
+		to {
+			opacity: 1;
+			clip-path: inset(0 0 0 0);
+		}
 	}
 }

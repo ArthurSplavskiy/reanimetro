@@ -1,8 +1,7 @@
+@use '../styles/abstracts/functions' as *;
+
 .wrapper {
-	height: 100vh;
-	padding: 1.125rem var(--side-offset) 0 var(--side-offset);
-	:global {
-		background: var(--blue);
-		z-index: z-component('wrapper');
-	}
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }

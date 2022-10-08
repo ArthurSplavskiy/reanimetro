@@ -1,0 +1,38 @@
+[
+	{
+		"locale": "ua",
+		"localeName": ["Укр", "Анг"],
+		"preloaderMessage": "Кожних 45 секунд у країнах % Європи зупиняється людське % серце",
+		"menu": [
+			"Про проєкт",
+			"Інтерактивна гра",
+			"Про дефібрилятори",
+			"Міфи про реанімацію",
+			"Реальні історії",
+			"Плейлист реанімації",
+			"Контакти"
+		],
+		"scrollIndicator": "скролл",
+		"slogan": "Я ТВОЄ СЕРЦЕ",
+		"firstTipStartScene": "Ти можеш врятувати моє життя! Клікни на серце",
+		"secondTipStartScene": "Я навчу тебе основам реанімації"
+	},
+	{
+		"locale": "en",
+		"localeName": ["Eng", "Ukr"],
+		"preloaderMessage": " Every 45 seconds, a human % heart stops in European % countries",
+		"menu": [
+			"About project",
+			"Interactive game",
+			"About defibrillators",
+			"Myths about resuscitation",
+			"True stories",
+			"Resuscitation playlist",
+			"Contacts"
+		],
+		"scrollIndicator": "scroll",
+		"slogan": "I'm your heart",
+		"firstTipStartScene": "You can save my life! Click on the heart",
+		"secondTipStartScene": "I will teach you the basics of resuscitation"
+	}
+]

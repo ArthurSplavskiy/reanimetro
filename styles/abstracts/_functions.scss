@@ -1,6 +1,7 @@
 @use 'sass:math';
 
-$z-indexes: ('menu', 'wrapper');
+$z-indexes: ('noise', 'header', 'menuBtn', 'menu', 'startSceneTips');
+$defaultFontSize: 16;
 
 @function z($name) {
 	@if index($z-indexes, $name) {
@@ -17,11 +18,11 @@ $z-indexes: ('menu', 'wrapper');
 }
 
 @function rem($px) {
-	$result: math.div($px, var(--defaultFontSize)) + rem;
+	$result: math.div($px, $defaultFontSize) + rem;
 	@return $result;
 }
 
-@function em($px, $current: var(--defaultFontSize)) {
+@function em($px, $current: $defaultFontSize) {
 	$result: math.div($px, $current) + em;
 	@return $result;
 }

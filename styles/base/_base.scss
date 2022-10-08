@@ -10,6 +10,167 @@
 	}
 }
 
-.noscroll {
+.click-cursor {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	background-color: white;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	border-radius: 100%;
+	user-select: none;
+	pointer-events: none;
+	font-weight: 500;
+	z-index: 10000;
+	transform-origin: center center;
+	transform: scale(0);
+}
+
+@media(any-hover: none) {
+	.click-cursor {
+		display: none;
+	}
+}
+
+.no-scroll {
 	overflow: hidden;
 }
+
+.visually-hidden {
+	opacity: 0!important;
+	visibility: hidden!important;
+	pointer-events: none!important;
+}
+
+button {
+	&:active {
+		transform: scale(0.97)!important;
+	}
+}
+
+.split-text {
+	&.firstShow {
+		& > div {
+			& > span {
+				animation-duration: 2s;
+			}
+		}
+	}
+	&.reveal {
+		& > div {
+			& > span {
+				animation-play-state: running;
+			}
+		}
+	}
+	&:not(.reveal):not(.firstShow) {
+		& > div {
+			& > span {
+				animation-name: revealAnimationReverse;
+				animation-duration: 1s;
+				animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+				animation-fill-mode: forwards;
+				animation-play-state: running;
+			}
+		}
+	}
+	& > div {
+		display: inline-block;
+		overflow: hidden;
+		animation-delay: inherit;
+		&:not(:last-child) {
+			margin-right: 6px;
+		}
+
+		& > span {
+			display: inline-block;
+			animation-name: revealAnimation;
+			animation-duration: 1s;
+			animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+			animation-fill-mode: forwards;
+			animation-play-state: paused;
+			animation-delay: inherit;
+			opacity: 0;
+			transform: scaleY(1.5) translate3d(0, 100%, 0);
+		}
+	}
+}
+
+.split-text-lines {
+	&.firstShow {
+		& > div {
+			& > span {
+				& > span {
+					animation-duration: 2s;
+				}
+			}
+		}
+	}
+	&.reveal {
+		& > div {
+			& > span {
+				& > span {
+					animation-play-state: running;
+				}
+			}
+		}
+	}
+	&:not(.reveal) {
+		& > div {
+			& > span {
+				& > span {
+					animation-name: revealAnimationReverse;
+					animation-duration: 1s;
+					animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+					animation-fill-mode: forwards;
+					animation-play-state: running;
+				}
+			}
+		}
+	}
+	& > div {
+		display: inline-block;
+		margin-right: 6px;
+		& > span {
+			display: inline-block;
+			overflow: hidden;
+			animation-delay: inherit;
+			& > span {
+				display: inline-block;
+				animation-name: revealAnimation;
+				animation-duration: 1s;
+				animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+				animation-fill-mode: forwards;
+				animation-play-state: paused;
+				animation-delay: inherit;
+				opacity: 0;
+				transform: scaleY(1.5) translate3d(0, 100%, 0);
+			}
+		}
+	}
+}
+
+@keyframes revealAnimation {
+	from {
+		opacity: 0;
+		transform: scaleY(1.5) translate3d(0, 100%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: scaleY(1) translate3d(0, 0, 0);
+	}
+}
+@keyframes revealAnimationReverse {
+	from {
+		opacity: 1;
+		transform: scaleY(1) translate3d(0, 0, 0);
+	}
+	to {
+		opacity: 0;
+		transform: scaleY(1.5) translate3d(0, 100%, 0);
+	}
+}
+

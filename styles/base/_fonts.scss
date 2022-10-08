@@ -1,7 +1,26 @@
 @font-face {
-	font-family: var(--firsneueFont);
-	src: url('../../assets/fonts/TTFirsNeue-Regular.woff2') format('woff2');
+	font-family: 'TT Firs Neue';
+	src: local('TT Firs Neue Regular'), local('TTFirsNeue-Regular'),
+		url('../../public/fonts/TTFirsNeue-Regular.woff2') format('woff2');
 	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'TT Firs Neue';
+	src: local('TT Firs Neue Medium'), local('TTFirsNeue-Medium'),
+		url('../../public/fonts/TTFirsNeue-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'TT Firs Neue';
+	src: local('TT Firs Neue Bold'), local('TTFirsNeue-Bold'),
+		url('../../public/fonts/TTFirsNeue-Bold.woff2') format('woff2');
+	font-weight: bold;
 	font-style: normal;
 	font-display: swap;
 }

@@ -12,14 +12,16 @@
 			}
 		],
 		"@typescript-eslint/explicit-function-return-type": "off",
+		"react-hooks/exhaustive-deps": "off",
 		"@typescript-eslint/no-var-requires": "off",
-		"no-undef": "off"
+		"no-undef": "off",
+		"no-empty": "off"
 	},
 	"overrides": [
 		{
 			"files": ["*.ts", "*.mts", "*.cts", "*.tsx"],
 			"rules": {
-				"@typescript-eslint/explicit-function-return-type": ["warn"],
+				"@typescript-eslint/explicit-function-return-type": ["off"],
 				"@typescript-eslint/no-unused-vars": ["warn"],
 				//"@typescript-eslint/no-extra-parens": ["error"],
 				"no-extra-parens": "off"
