@@ -1,5 +1,4 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from 'react';
-import {useIsFirstRender} from '../hooks/useIsFirstRender';
 import {pageText} from '../misc/allSplitText';
 
 export interface IAppContext {
@@ -31,12 +30,9 @@ export const AppContextProvider = ({
 }: PropsWithChildren<IAppContext>): JSX.Element => {
 	const [lang, setLang] = useState(language);
 	const [scrollAble, setScrollAble] = useState(scrollable);
-	const isFirstRender = useIsFirstRender();
+	const [notFirstRender, setNotFirstRender] = useState(false);
 
 	const setLanguage = (newLang: string) => {
-		if (!isFirstRender) {
-			pageText.getText('split-text').opacity('0');
-		}
 		setLang(newLang);
 		localStorage.setItem('language', newLang);
 	};
@@ -59,6 +55,8 @@ export const AppContextProvider = ({
 				} else return;
 			}
 		}
+
+		setTimeout(() => setNotFirstRender(true), 2000);
 	}, []);
 
 	useEffect(() => {
@@ -70,7 +68,7 @@ export const AppContextProvider = ({
 	}, [scrollAble]);
 
 	useEffect(() => {
-		if (!isFirstRender) {
+		if (notFirstRender) {
 			pageText.getText('split-text-lines').removeClass('reveal');
 			pageText.getText('split-text').removeClass('firstShow');
 			pageText.getText('split-text').removeClass('reveal');
