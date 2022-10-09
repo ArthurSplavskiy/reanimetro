@@ -5,7 +5,17 @@ function Home() {
 	return (
 		<>
 			<StartScene />
-			<div style={{background: 'black', height: '200vh', width: '100%'}}>de</div>
+			<div
+				className="geo"
+				style={{background: 'black', height: '200vh', width: '100%'}}
+			>
+				<div
+					className="geo-block"
+					style={{background: 'yellow', height: '100px', width: '100px'}}
+				>
+					de
+				</div>
+			</div>
 		</>
 	);
 }

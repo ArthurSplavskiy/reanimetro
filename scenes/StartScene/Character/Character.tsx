@@ -7,16 +7,12 @@ import styles from './character.module.scss';
 import {eventBus} from '../../../context/EventBus/EventBus';
 import gsap from 'gsap';
 import {useWindowSize} from '../../../hooks/useWindowSize';
-import {useScrollable} from '../../../context/app.context';
-import {useScrollY} from '../../../hooks/useScrollY';
 
 export const Character = () => {
 	const [characterLottie, setCharacterLottie] = useState(characterAnimation);
 	const [characterPause, setCharacterPause] = useState(true);
 	const characterRef = useRef<HTMLDivElement>(null);
 	const [windowWidth] = useWindowSize();
-	const {scrollable} = useScrollable();
-	const scrollY = useScrollY();
 
 	const getCharacter = () => {
 		gsap.to(characterRef.current, {
@@ -31,6 +27,21 @@ export const Character = () => {
 		}, 2000);
 	};
 
+	const scrollAnimation = () => {
+		gsap.to('.geo-block', {
+			scrollTrigger: {
+				trigger: '.geo',
+				pin: true, // pin the trigger element while active
+				start: 'top top', // when the top of the trigger hits the top of the viewport
+				end: '+=100', // end after scrolling 500px beyond the start
+				scrub: 1,
+				markers: true,
+				onEnter: () => setCharacterLottie(characterAnimationFull)
+			},
+			rotate: 360
+		});
+	};
+
 	const defaultOptions = {
 		loop: false,
 		autoplay: false,
@@ -43,6 +54,7 @@ export const Character = () => {
 	useEffect(() => {
 		eventBus.on('preloaderAnimationEnd', getCharacter);
 		eventBus.on('reanimationStart', startReanimation);
+		scrollAnimation();
 
 		return () => {
 			eventBus.remove('preloaderAnimationEnd', getCharacter);
@@ -50,14 +62,11 @@ export const Character = () => {
 		};
 	}, []);
 
-	useEffect(() => {
-		if (scrollY > 4) {
-			setCharacterLottie(characterAnimationFull);
-		}
-	}, [scrollY]);
-
 	return (
-		<div className={styles.character}>
+		<div
+			className={styles.character}
+			id={'id'}
+		>
 			<div
 				className={styles.characterSVG}
 				ref={characterRef}

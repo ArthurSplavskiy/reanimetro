@@ -2,11 +2,15 @@ import styles from './Layout.module.scss';
 import {LayoutProps} from './Layout.props';
 import {TopLine} from './TopLine/TopLine';
 import {BottomLine} from './BottomLine/BottomLine';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect} from 'react';
 import {AppContextProvider} from '../context/app.context';
 import {mouseEnterHandler, mouseLeaveHandler, mouseMoveHandler} from '../misc/cursor';
+import SmoothScroll from '../misc/smoothScroll';
 
 const Layout = ({children}: LayoutProps): JSX.Element => {
+	useEffect(() => {
+		SmoothScroll();
+	}, []);
 	return (
 		<div
 			className={styles.wrapper}
@@ -20,8 +24,12 @@ const Layout = ({children}: LayoutProps): JSX.Element => {
 				tabIndex={0}
 				role="main"
 			>
-				<div></div>
-				{children}
+				<div
+					id="scroll-viewport"
+					data-scroll
+				>
+					{children}
+				</div>
 			</main>
 			<BottomLine className={styles.BottomLine} />
 			<div className="noise"></div>

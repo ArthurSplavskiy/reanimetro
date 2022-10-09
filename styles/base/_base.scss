@@ -10,6 +10,22 @@
 	}
 }
 
+.no-scroll {
+	overflow: hidden;
+}
+
+.visually-hidden {
+	opacity: 0!important;
+	visibility: hidden!important;
+	pointer-events: none!important;
+}
+
+button {
+	&:active {
+		transform: scale(0.97)!important;
+	}
+}
+
 .click-cursor {
 	position: fixed;
 	top: 50%;
@@ -35,20 +51,23 @@
 	}
 }
 
-.no-scroll {
+#scroll-viewport {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
 	overflow: hidden;
 }
 
-.visually-hidden {
-	opacity: 0!important;
-	visibility: hidden!important;
-	pointer-events: none!important;
+.scrollbar-track {
+	background: transparent!important;
+	width: 4px!important;
 }
 
-button {
-	&:active {
-		transform: scale(0.97)!important;
-	}
+.scrollbar-thumb {
+	background: var(--red)!important;
+	border-radius: 0!important;
 }
 
 .split-text {
@@ -173,4 +192,3 @@ button {
 		transform: scaleY(1.5) translate3d(0, 100%, 0);
 	}
 }
-

@@ -1,5 +1,6 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from 'react';
 import {pageText} from '../misc/allSplitText';
+import SmoothScroll from '../misc/smoothScroll';
 
 export interface IAppContext {
 	language: string;
@@ -65,6 +66,8 @@ export const AppContextProvider = ({
 				? document.body.classList.remove('no-scroll')
 				: document.body.classList.add('no-scroll');
 		}
+		if (scrollAble) SmoothScroll().updatePluginOptions('modal', {open: false});
+		else SmoothScroll().updatePluginOptions('modal', {open: true});
 	}, [scrollAble]);
 
 	useEffect(() => {
