@@ -8,6 +8,7 @@ import {eventBus} from '../../../context/EventBus/EventBus';
 import styles from './Preloader.module.scss';
 import * as HeartAnimation from '../../../public/lottie/heart.json';
 import * as HeartCharacterAnimation from '../../../public/lottie/heart-character.json';
+import {useScrollable} from '../../../context/app.context';
 
 export const Preloader = () => {
 	const [messageText, setMessageText] = useState<string>('');
@@ -18,6 +19,7 @@ export const Preloader = () => {
 	const heartRef = useRef<HTMLDivElement>(null);
 	const preloaderRef = useRef<HTMLDivElement>(null);
 	const message = useTranslate<string>('preloaderMessage');
+	const {scrollable} = useScrollable();
 
 	const HeartAnimationConfig = {
 		loop: false,
@@ -54,6 +56,20 @@ export const Preloader = () => {
 	useEffect(() => {
 		setMessageText(message || '');
 	}, [message]);
+
+	useEffect(() => {
+		if (scrollable) {
+			gsap.to(heartRef.current, {
+				scrollTrigger: {
+					trigger: '.start-scene',
+					start: '4px top'
+				},
+				scale: 0.2,
+				autoAlpha: 0,
+				y: 40
+			});
+		}
+	}, [scrollable]);
 
 	useEffect(() => {
 		if (preloaderHeartAnimationEnd) {

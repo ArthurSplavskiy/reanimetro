@@ -1,0 +1,50 @@
+@use '../../../styles/abstracts/functions' as *;
+
+.title {
+  max-width: rem(920);
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 120%;
+  text-transform: uppercase;
+  margin-bottom: rem(32);
+}
+
+.titleHeart {
+  display: inline-block;
+  & > div {
+    position: relative;
+    top: 7px;
+    left: -5px;
+  }
+}
+
+.titleAnimate {
+  span {
+    display: inline-block;
+    animation: titleAnimationIn 1s forwards;
+  }
+}
+
+@keyframes titleAnimationIn {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text {
+  max-width: rem(536);
+  padding-left: rem(96);
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 162%;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}

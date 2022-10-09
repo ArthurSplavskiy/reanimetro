@@ -73,7 +73,7 @@ export const Tips = () => {
 						position="topLeft"
 						show={showFirstTip}
 					>
-						{firstTipText}
+						{firstTipText || 'Something went wrong'}
 					</Tip>
 					<div className={styles.clickCircle}>
 						<Lottie
@@ -91,7 +91,7 @@ export const Tips = () => {
 						position="topRight"
 						show={showSecondTip}
 					>
-						{secondTipText}
+						{secondTipText || 'Something went wrong'}
 					</Tip>
 					<div
 						className={cn(styles.holdHeart, {

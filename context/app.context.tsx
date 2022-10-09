@@ -57,6 +57,9 @@ export const AppContextProvider = ({
 		}
 
 		setTimeout(() => setNotFirstRender(true), 2000);
+
+		if (window.scrollY === 0) setScrollAble(false);
+		else setScrollAble(true);
 	}, []);
 
 	useEffect(() => {

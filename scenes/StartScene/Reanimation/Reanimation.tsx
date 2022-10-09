@@ -3,13 +3,17 @@ import * as cardioBlack from '../../../public/lottie/cardio-black.json';
 import * as cardioRed from '../../../public/lottie/cardio-red.json';
 import styles from './Reanimation.module.scss';
 import {useWindowSize} from '../../../hooks/useWindowSize';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {eventBus} from '../../../context/EventBus/EventBus';
+import gsap from 'gsap';
+import {useScrollable} from '../../../context/app.context';
 
 export const Reanimation = () => {
 	const [windowWidth] = useWindowSize();
 	const [cardioLottie, setCardioLottie] = useState(cardioBlack);
 	const [cardioAnimationPause, setCardioAnimationPause] = useState(true);
+	const {scrollable} = useScrollable();
+	const reanimationRef = useRef<HTMLDivElement>(null);
 
 	const cardioAnimationHandler = () => {
 		setCardioAnimationPause(false);
@@ -31,6 +35,20 @@ export const Reanimation = () => {
 	};
 
 	useEffect(() => {
+		if (scrollable) {
+			gsap.to(reanimationRef.current, {
+				scrollTrigger: {
+					trigger: '.start-scene',
+					start: '4px top',
+					end: '200px top',
+					scrub: 1
+				},
+				y: -120
+			});
+		}
+	}, [scrollable]);
+
+	useEffect(() => {
 		eventBus.on('preloaderAnimationEnd', cardioAnimationHandler);
 		eventBus.on('reanimationStart', setSecondCardioLottie);
 
@@ -41,7 +59,10 @@ export const Reanimation = () => {
 	}, []);
 
 	return (
-		<div className={styles.reanimation}>
+		<div
+			ref={reanimationRef}
+			className={styles.reanimation}
+		>
 			<Lottie
 				options={CardioAnimationConfig}
 				width={windowWidth && windowWidth + 60}

@@ -2,11 +2,16 @@ import styles from './Layout.module.scss';
 import {LayoutProps} from './Layout.props';
 import {TopLine} from './TopLine/TopLine';
 import {BottomLine} from './BottomLine/BottomLine';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect} from 'react';
 import {AppContextProvider} from '../context/app.context';
 import {mouseEnterHandler, mouseLeaveHandler, mouseMoveHandler} from '../misc/cursor';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 const Layout = ({children}: LayoutProps): JSX.Element => {
+	useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+	}, []);
 	return (
 		<div
 			className={styles.wrapper}
@@ -24,7 +29,7 @@ const Layout = ({children}: LayoutProps): JSX.Element => {
 			</main>
 			<BottomLine className={styles.BottomLine} />
 			<div className="noise"></div>
-			<div className="click-cursor">click</div>
+			<div className="click-cursor"></div>
 		</div>
 	);
 };
