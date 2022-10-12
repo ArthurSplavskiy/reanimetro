@@ -33,6 +33,8 @@ export const AppContextProvider = ({
 	const [notFirstRender, setNotFirstRender] = useState(false);
 
 	const setLanguage = (newLang: string) => {
+		pageText.getText('split-text').opacity('0');
+		pageText.getText('split-text-lines').opacity('0');
 		setLang(newLang);
 		localStorage.setItem('language', newLang);
 	};
@@ -80,6 +82,7 @@ export const AppContextProvider = ({
 				pageText.getText('split-text').addClass('firstShow');
 				pageText.getText('split-text').addClass('reveal');
 				pageText.getText('split-text').opacity('1');
+				pageText.getText('split-text-lines').opacity('1');
 			}, 500);
 		}
 	}, [lang]);

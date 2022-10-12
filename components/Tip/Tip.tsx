@@ -4,7 +4,6 @@ import cn from 'classnames';
 import {SplitText} from '@cyriacbr/react-split-text';
 import {useEffect, useState} from 'react';
 import {useBrowser} from '../../hooks/useBrowser';
-import {useLanguage} from '../../context/app.context';
 
 export const Tip = ({
 	icon,
@@ -55,7 +54,7 @@ export const Tip = ({
 				{icon && <IconComponent />}
 				{isBrowser && (
 					<SplitText
-						className={cn(styles.MenuRevealText, 'firstShow', 'split-text-lines', {
+						className={cn('firstShow', 'split-text-lines', {
 							reveal: isReveal
 						})}
 					>

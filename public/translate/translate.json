@@ -15,7 +15,11 @@
 		"scrollIndicator": "скролл",
 		"slogan": "Я ТВОЄ СЕРЦЕ",
 		"firstTipStartScene": "Ти можеш врятувати моє життя! Клікни на серце",
-		"secondTipStartScene": "Я навчу тебе основам реанімації"
+		"secondTipStartScene": "Я навчу тебе основам реанімації",
+		"firstHorizontalSectionText": [
+			"Основи домедичної допомоги потрібно знати всім, адже до приїзду медиків втрачається дорогоцінний час, коли можна врятувати життя чи не допустити погіршення стану.",
+			"Той, хто надає домедичну допомогу, повинен самостійно та максимально швидко вирішити, що потрібно робити, аби врятувати життя потерпілого."
+		]
 	},
 	{
 		"locale": "en",
@@ -33,6 +37,10 @@
 		"scrollIndicator": "scroll",
 		"slogan": "I'm your heart",
 		"firstTipStartScene": "You can save my life! Click on the heart",
-		"secondTipStartScene": "I will teach you the basics of resuscitation"
+		"secondTipStartScene": "I will teach you the basics of resuscitation",
+		"firstHorizontalSectionText": [
+			"Everyone should know the basics of first aid, precious time is lost before the arrival of doctors, when it is possible to save a life or prevent the deterioration of the condition.",
+			"The person who provides first aid must independently and as quickly as possible decide what needs to be done to save the victim's life."
+		]
 	}
 ]

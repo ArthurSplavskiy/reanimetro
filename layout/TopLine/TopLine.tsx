@@ -66,6 +66,7 @@ export const TopLine = ({className, ...props}: TopLineProps): JSX.Element => {
 							className={cn('switchBtn', styles.SoundSwitch, {
 								[styles.SoundSwitchShow]: show
 							})}
+							data-cursor-hide
 						>
 							<input
 								type="checkbox"
@@ -109,6 +110,7 @@ export const TopLine = ({className, ...props}: TopLineProps): JSX.Element => {
 								[styles.MenuButtonShow]: show,
 								[styles.MenuButtonAppeared]: !show
 							})}
+							data-cursor-hide
 							onClick={handleMenuOpen}
 						></button>
 					</div>

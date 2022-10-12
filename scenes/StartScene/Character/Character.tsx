@@ -8,7 +8,6 @@ import {eventBus} from '../../../context/EventBus/EventBus';
 import gsap from 'gsap';
 import {useWindowSize} from '../../../hooks/useWindowSize';
 import {useScrollable} from '../../../context/app.context';
-import {useScrollY} from '../../../hooks/useScrollY';
 
 export const Character = () => {
 	const [characterLottie, setCharacterLottie] = useState(characterAnimation);
@@ -16,7 +15,6 @@ export const Character = () => {
 	const characterRef = useRef<HTMLDivElement>(null);
 	const [windowWidth] = useWindowSize();
 	const {scrollable} = useScrollable();
-	const scrollY = useScrollY();
 
 	const getCharacter = () => {
 		gsap.to(characterRef.current, {
@@ -31,6 +29,10 @@ export const Character = () => {
 		}, 2000);
 	};
 
+	const setFullCharacter = () => {
+		setCharacterLottie(characterAnimationFull);
+	};
+
 	const defaultOptions = {
 		loop: false,
 		autoplay: false,
@@ -43,18 +45,14 @@ export const Character = () => {
 	useEffect(() => {
 		eventBus.on('preloaderAnimationEnd', getCharacter);
 		eventBus.on('reanimationStart', startReanimation);
+		eventBus.on('setFullCharacter', setFullCharacter);
 
 		return () => {
 			eventBus.remove('preloaderAnimationEnd', getCharacter);
 			eventBus.remove('reanimationStart', startReanimation);
+			eventBus.remove('setFullCharacter', setFullCharacter);
 		};
 	}, []);
-
-	useEffect(() => {
-		if (scrollY > 4) {
-			setCharacterLottie(characterAnimationFull);
-		}
-	}, [scrollY]);
 
 	return (
 		<div className={styles.character}>

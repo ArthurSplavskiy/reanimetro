@@ -1,14 +1,19 @@
-import {FC, ReactNode, useEffect, useState} from 'react';
+import {FC, useCallback, useEffect, useRef, useState} from 'react';
 import styles from './TextContent.module.scss';
 import cn from 'classnames';
 import Lottie from 'react-lottie';
 import {SplitText} from '@cyriacbr/react-split-text';
 import * as heartTitle from '../../../public/lottie/heart-title.json';
 import {useLanguage} from '../../../context/app.context';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import {useBrowser} from '../../../hooks/useBrowser';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
 	title: 'type1' | 'type2';
-	text: string | string[];
+	text?: string | string[];
 }
 
 const heartAnimationConfig = {
@@ -30,18 +35,72 @@ const titleType2 = {
 
 export const TextContent: FC<Props> = ({title, text}) => {
 	const {language} = useLanguage();
+	const isBrowser = useBrowser();
 	const [locale, setLocale] = useState('');
+	const [titleReveal, setTitleReveal] = useState(false);
+	const [textReveal, setTextReveal] = useState(false);
+	const sectionRef = useRef<HTMLDivElement>(null);
+	const titleRef = useRef<HTMLDivElement>(null);
+	const textRef = useRef<HTMLDivElement>(null);
+	const timeline = useRef(gsap.timeline());
+	const [startSectionAnimation, setStartSectionAnimation] = useState(false);
+
+	const createScrollTrigger = useCallback(() => {
+		ScrollTrigger.create({
+			trigger: sectionRef.current,
+			animation: timeline.current,
+			start: 'top top',
+			end: '+=1000',
+			//end: () => `${this.timelineEnd || this.timelineSizes.endDesktop}px 100%`,
+			pin: true,
+			scrub: true,
+			invalidateOnRefresh: true,
+			onEnter: () => setStartSectionAnimation(true)
+		});
+	}, []);
+
+	const createTextAnimation = useCallback(() => {
+		if (textRef.current !== null) {
+			gsap.to(titleRef.current, {
+				scrollTrigger: {
+					trigger: titleRef.current,
+					start: 'bottom bottom'
+				},
+				onStart: () => setTitleReveal(true)
+			});
+		}
+		setTimeout(() => {
+			if (textRef.current !== null) {
+				gsap.to(textRef.current, {
+					scrollTrigger: {
+						trigger: textRef.current,
+						start: 'bottom bottom'
+					},
+					onStart: () => setTextReveal(true)
+				});
+			}
+		}, 100);
+	}, []);
 
 	useEffect(() => {
 		setLocale(language);
 	}, [language]);
 
+	useEffect(() => {
+		createTextAnimation();
+	}, [isBrowser, textRef, titleRef]);
+
+	useEffect(() => {
+		createScrollTrigger();
+	}, []);
+
 	return (
-		<>
+		<section ref={sectionRef}>
 			{title === 'type1' && (
 				<div
+					ref={titleRef}
 					className={cn(styles.title, {
-						[styles.titleAnimate]: true
+						[styles.titleAnimate]: titleReveal
 					})}
 				>
 					{locale === 'ua' && (
@@ -95,7 +154,7 @@ export const TextContent: FC<Props> = ({title, text}) => {
 			{title === 'type2' && (
 				<SplitText
 					className={cn('split-text', 'firstShow', {
-						reveal: true
+						reveal: textReveal
 					})}
 					LineWrapper={({lineIndex, children}) => (
 						<span className="wrapper">
@@ -105,27 +164,33 @@ export const TextContent: FC<Props> = ({title, text}) => {
 					)}
 				></SplitText>
 			)}
-			<div className={styles.text}>
-				{Array.isArray(text) ? (
-					text.map((p, i) => (
+			{isBrowser && (
+				<div
+					ref={textRef}
+					className={styles.text}
+				>
+					{Array.isArray(text) ? (
+						text.map((p, i) => (
+							<SplitText
+								key={i}
+								className={cn(styles.textItem, 'split-text-lines', 'firstShow', {
+									reveal: textReveal
+								})}
+							>
+								{p}
+							</SplitText>
+						))
+					) : (
 						<SplitText
-							className={cn('split-text-lines', 'firstShow', {
-								reveal: true
+							className={cn(styles.textItem, 'split-text-lines', 'firstShow', {
+								reveal: textReveal
 							})}
 						>
-							{p}
+							{text}
 						</SplitText>
-					))
-				) : (
-					<SplitText
-						className={cn('split-text-lines', 'firstShow', {
-							reveal: true
-						})}
-					>
-						{text}
-					</SplitText>
-				)}
-			</div>
-		</>
+					)}
+				</div>
+			)}
+		</section>
 	);
 };

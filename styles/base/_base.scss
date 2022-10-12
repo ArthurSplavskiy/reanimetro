@@ -10,6 +10,10 @@
 	}
 }
 
+[data-cursor-hide] {
+	cursor: pointer;
+}
+
 .click-cursor {
 	position: fixed;
 	top: 50%;
@@ -31,6 +35,9 @@
 	z-index: 10000;
 	transform-origin: center center;
 	transform: scale(0);
+	&.hide {
+		display: none;
+	}
 }
 
 @media(any-hover: none) {

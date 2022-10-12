@@ -41,8 +41,13 @@ export const Tips = () => {
 			setShowFirstTip(false);
 			setShowLineTip(false);
 			setShowSecondTip(true);
-			setScrollable?.(true);
 		}, 3500);
+		setTimeout(() => {
+			eventBus.dispatch('setFullCharacter');
+		}, 5000);
+		setTimeout(() => {
+			setScrollable?.(true);
+		}, 6000);
 	};
 
 	useEffect(() => {

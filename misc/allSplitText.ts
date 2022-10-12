@@ -5,15 +5,28 @@ interface I {
 export const pageText: I = {
 	getText: nodeStr => {
 		if (document) {
-			const text: HTMLElement | null = document.querySelector(`.${nodeStr}`);
+			const text = document.querySelectorAll(`.${nodeStr}`);
 			const opacity = (opacityValue: '0' | '1') => {
-				if (text !== null) text.style.opacity = opacityValue;
+				if (text) {
+					text.forEach(t => {
+						const textNode = t as HTMLElement;
+						textNode.style.opacity = opacityValue;
+					});
+				}
 			};
 			const removeClass = (classValue: string) => {
-				if (text !== null) text.classList.remove(classValue);
+				if (text) {
+					text.forEach(t => {
+						t.classList.remove(classValue);
+					});
+				}
 			};
 			const addClass = (classValue: string) => {
-				if (text !== null) text.classList.add(classValue);
+				if (text) {
+					text.forEach(t => {
+						t.classList.add(classValue);
+					});
+				}
 			};
 
 			return {

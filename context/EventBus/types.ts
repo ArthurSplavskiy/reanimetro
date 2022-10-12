@@ -1,1 +1,1 @@
-export type tEventBusActions = 'preloaderAnimationEnd' | 'reanimationStart';
+export type tEventBusActions = 'preloaderAnimationEnd' | 'reanimationStart' | 'setFullCharacter';

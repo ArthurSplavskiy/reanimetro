@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Layout.module.scss';
 import {LayoutProps} from './Layout.props';
 import {TopLine} from './TopLine/TopLine';
@@ -7,10 +8,14 @@ import {AppContextProvider} from '../context/app.context';
 import {mouseEnterHandler, mouseLeaveHandler, mouseMoveHandler} from '../misc/cursor';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import {offCursorElements} from '../misc/offCursorElements';
+
+React.useLayoutEffect = React.useEffect;
 
 const Layout = ({children}: LayoutProps): JSX.Element => {
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
+		offCursorElements('[data-cursor-hide]');
 	}, []);
 	return (
 		<div

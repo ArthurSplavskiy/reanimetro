@@ -55,6 +55,7 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 					[styles.show]: show
 				})}
 				onClick={() => setSwitchIsOpen(prev => !prev)}
+				data-cursor-hide
 			>
 				<div className={styles.BottomLangVariant}>
 					<button

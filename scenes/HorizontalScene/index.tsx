@@ -4,7 +4,7 @@ import {TextContent} from './TextContent';
 
 interface Props {
 	title: 'type1' | 'type2';
-	text: string | string[];
+	text?: string | string[];
 	tips?: string | string[];
 	scene?: any;
 }

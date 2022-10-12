@@ -53,23 +53,16 @@ export const Preloader = () => {
 		}
 	};
 
+	const hideHeart = () => {
+		gsap.to(heartRef.current, {
+			scale: 0,
+			y: 40
+		});
+	};
+
 	useEffect(() => {
 		setMessageText(message || '');
 	}, [message]);
-
-	useEffect(() => {
-		if (scrollable) {
-			gsap.to(heartRef.current, {
-				scrollTrigger: {
-					trigger: '.start-scene',
-					start: '4px top'
-				},
-				scale: 0.2,
-				autoAlpha: 0,
-				y: 40
-			});
-		}
-	}, [scrollable]);
 
 	useEffect(() => {
 		if (preloaderHeartAnimationEnd) {
@@ -83,8 +76,12 @@ export const Preloader = () => {
 
 	useEffect(() => {
 		const timeout = setTimeout(() => setTextHide(true), 4000);
+		eventBus.on('setFullCharacter', hideHeart);
 
-		return () => clearTimeout(timeout);
+		return () => {
+			clearTimeout(timeout);
+			eventBus.remove('setFullCharacter', hideHeart);
+		};
 	}, []);
 
 	return (
