@@ -1,7 +1,6 @@
-import { withLayout } from '../layout/Layout';
+import {withLayout} from '@layout/Layout';
 
 export function Error404(): JSX.Element {
-
 	return (
 		<>
 			<h1>Помилка 404</h1>

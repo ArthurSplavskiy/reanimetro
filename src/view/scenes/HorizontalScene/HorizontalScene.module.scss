@@ -1,0 +1,13 @@
+@use '../../../../styles/abstracts/functions' as *;
+
+.section {
+  display: flex;
+  padding: rem(132) var(--side-offset) rem(70) var(--side-offset);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.scroller {
+  display: grid;
+  grid-template-columns: 100vw 100vw;
+}
