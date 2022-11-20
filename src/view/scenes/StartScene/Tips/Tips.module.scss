@@ -1,5 +1,5 @@
-@use '../../../../../styles/placeholders/extends' as *;
-@use '../../../../../styles/abstracts/functions' as *;
+@use '/styles/placeholders/extends' as *;
+@use '/styles/abstracts/functions' as *;
 
 .tips {
   @extend %cover;

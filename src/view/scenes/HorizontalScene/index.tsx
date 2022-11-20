@@ -4,15 +4,17 @@ import {TextContent} from './TextContent';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import gsap from 'gsap';
 import {MediaContent} from '@scenes/HorizontalScene/MediaContent';
+import {SIDE_OFFSET} from '@misc/constants';
+import {eventBus} from '@context/EventBus/EventBus';
 
 interface Props {
 	title: 'type1' | 'type2';
 	text?: string | string[];
-	tips?: string | string[];
+	tips?: string[];
 	scene?: any;
 }
 
-export const HorizontalSection: FC<Props> = ({title, text, scene}) => {
+export const HorizontalSection: FC<Props> = ({title, text, scene, tips}) => {
 	const [startSectionAnimation, setStartSectionAnimation] = useState(false);
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
@@ -23,8 +25,7 @@ export const HorizontalSection: FC<Props> = ({title, text, scene}) => {
 			trigger: sectionRef.current,
 			animation: timeline.current,
 			start: 'top top',
-			end: '+=1000',
-			//end: () => `${this.timelineEnd || this.timelineSizes.endDesktop}px 100%`,
+			end: () => '2000px 100%',
 			pin: true,
 			scrub: true,
 			invalidateOnRefresh: true,
@@ -34,8 +35,20 @@ export const HorizontalSection: FC<Props> = ({title, text, scene}) => {
 
 	const createScroller = useCallback(() => {
 		if (scrollerRef.current !== null) {
+			timeline.current.fromTo(
+				scrollerRef.current,
+				{autoAlpha: 0.99, duration: 1.5},
+				{autoAlpha: 1}
+			);
 			timeline.current.to(scrollerRef.current, {
-				xPercent: '-100'
+				x: () =>
+					(scrollerRef.current &&
+						-scrollerRef.current.offsetWidth - SIDE_OFFSET + window.innerWidth) ||
+					0,
+				duration: 5
+			});
+			timeline.current.call(_ => {
+				eventBus.dispatch('setLastHorizontalAnimation');
 			});
 		}
 	}, []);
@@ -58,7 +71,10 @@ export const HorizontalSection: FC<Props> = ({title, text, scene}) => {
 					title={title}
 					text={text}
 				/>
-				<MediaContent scene={scene} />
+				<MediaContent
+					scene={scene}
+					tips={tips}
+				/>
 			</div>
 		</section>
 	);

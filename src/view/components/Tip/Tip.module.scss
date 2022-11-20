@@ -1,4 +1,4 @@
-@use '../../../../styles/abstracts/functions' as *;
+@use '/styles/abstracts/functions' as *;
 
 .tip {
   width: 100%;
@@ -12,13 +12,29 @@
   font-size: rem(22);
   line-height: rem(28);
   transition: all 0.8s ease-out;
-  &.topLeft.show,
-  &.bottomLeft.show {
+  &.topLeft.show {
     transform: scale(1) rotate(-15deg);
+    svg {
+      transform: rotate(15deg);
+    }
   }
-  &.topRight.show,
-  &.bottomRight.show {
+  &.bottomLeft.show {
     transform: scale(1) rotate(15deg);
+    svg {
+      transform: rotate(15deg);
+    }
+  }
+  &.topRight.show {
+    transform: scale(1) rotate(15deg);
+    svg {
+      transform: rotate(-15deg);
+    }
+  }
+  &.bottomRight.show {
+    transform: scale(1) rotate(-15deg);
+    svg {
+      transform: rotate(15deg);
+    }
   }
   &.show {
     opacity: 1;
@@ -26,6 +42,7 @@
 }
 
 .tipContent {
+  width: 100%;
   padding: rem(24) rem(24) rem(14) rem(24);
   border-radius: 10px;
   &.iconRight {

@@ -19,6 +19,12 @@
 		"firstHorizontalSectionText": [
 			"Основи домедичної допомоги потрібно знати всім, адже до приїзду медиків втрачається дорогоцінний час, коли можна врятувати життя чи не допустити погіршення стану.",
 			"Той, хто надає домедичну допомогу, повинен самостійно та максимально швидко вирішити, що потрібно робити, аби врятувати життя потерпілого."
+		],
+		"firstHorizontalSectionTips": [
+			"Чим швидше розпочато СЛР, тим більше у людини шансів вижити!",
+			"Жінки рідше отримують СЛР від сторонніх осіб, ніж чоловіки",
+			"Кожних 45 секунд у країнах Європи зупиняється чиєсь серце",
+			"Лише 3% очевидців без медичної освіти вміють надавати домедичну допомогу"
 		]
 	},
 	{
@@ -41,6 +47,12 @@
 		"firstHorizontalSectionText": [
 			"Everyone should know the basics of first aid, precious time is lost before the arrival of doctors, when it is possible to save a life or prevent the deterioration of the condition.",
 			"The person who provides first aid must independently and as quickly as possible decide what needs to be done to save the victim's life."
+		],
+		"firstHorizontalSectionTips": [
+			"The faster CPR is started, the greater the chance the person will survive!",
+			"Women are less likely to be resuscitated from bystanders than men",
+			"Every 45 seconds, a human heart stops in European countries",
+			"Only 3% of eyewitnesses without medical education are able to provide first aid"
 		]
 	}
 ]

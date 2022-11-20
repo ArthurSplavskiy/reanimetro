@@ -1,0 +1,40 @@
+@use '/styles/placeholders/extends' as *;
+@use '/styles/abstracts/functions' as *;
+
+.container {
+  @extend %flex-center;
+  position: relative;
+}
+
+.topLeftTip,
+.topRightTip,
+.bottomLeftTip,
+.bottomRightTip {
+  position: absolute;
+  font-size: rem(16);
+  line-height: rem(22);
+}
+
+.topLeftTip {
+  top: 0;
+  left: var(--side-offset);
+}
+.topRightTip {
+  top: 0;
+  right: var(--side-offset);
+}
+.bottomLeftTip {
+  bottom: 5.5rem;
+  left: var(--side-offset);
+}
+.bottomRightTip {
+  bottom: 5.5rem;
+  right: var(--side-offset);
+}
+
+.scene {
+  transition: var(--transition-long);
+}
+.smallScene {
+  transform: scale(0.7);
+}

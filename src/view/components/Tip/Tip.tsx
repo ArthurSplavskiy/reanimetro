@@ -42,7 +42,7 @@ export const Tip = ({
 			{...props}
 		>
 			<div
-				className={cn(className, styles.tipContent, {
+				className={cn(styles.tipContent, {
 					[styles.bgRed]: appearance === 'red',
 					[styles.bgMayonnaise]: appearance === 'mayonnaise',
 					[styles.bgBlue]: appearance === 'blue',
@@ -51,7 +51,7 @@ export const Tip = ({
 					[styles.onlyText]: icon === undefined
 				})}
 			>
-				{icon && <IconComponent />}
+				{position !== 'topRight' && position !== 'bottomRight' && icon ? <IconComponent /> : null}
 				{isBrowser && (
 					<SplitText
 						className={cn('firstShow', 'split-text-lines', {
@@ -61,6 +61,7 @@ export const Tip = ({
 						{children}
 					</SplitText>
 				)}
+				{(position === 'topRight' || position === 'bottomRight') && icon ? <IconComponent /> : null}
 			</div>
 		</div>
 	);

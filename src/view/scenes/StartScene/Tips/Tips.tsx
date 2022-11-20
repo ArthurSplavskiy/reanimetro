@@ -44,10 +44,10 @@ export const Tips = () => {
 		}, 3500);
 		setTimeout(() => {
 			eventBus.dispatch('setFullCharacter');
-		}, 5000);
+		}, 8000);
 		setTimeout(() => {
 			setScrollable?.(true);
-		}, 6000);
+		}, 9000);
 	};
 
 	useEffect(() => {

@@ -6,12 +6,14 @@ import * as horizontalScene1 from '@public/lottie/horizontal-scene-1.json';
 
 function Home() {
 	const firstHorizontalSectionText = useTranslate<string[]>('firstHorizontalSectionText');
+	const firstHorizontalSectionTips = useTranslate<string[]>('firstHorizontalSectionTips');
 	return (
 		<>
 			<StartScene />
 			<HorizontalSection
 				title="type1"
 				text={firstHorizontalSectionText}
+				tips={firstHorizontalSectionTips}
 				scene={horizontalScene1}
 			/>
 		</>
