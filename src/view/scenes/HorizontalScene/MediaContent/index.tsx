@@ -6,11 +6,12 @@ import {eventBus} from '@context/EventBus/EventBus';
 import cn from 'classnames';
 
 interface Props {
+	index: 1 | 2;
 	scene: any;
 	tips?: string[];
 }
 
-export const MediaContent: FC<Props> = ({scene, tips}) => {
+export const MediaContent: FC<Props> = ({scene, tips, index}) => {
 	const [sceneLottie] = useState(scene);
 	const [showTips, setShowTips] = useState(false);
 	const [reduceScene, setReduceScene] = useState(false);
@@ -30,10 +31,10 @@ export const MediaContent: FC<Props> = ({scene, tips}) => {
 	};
 
 	useEffect(() => {
-		eventBus.on('setLastHorizontalAnimation', setAnimation);
+		eventBus.on(`setLastHorizontalAnimation-${index}`, setAnimation);
 
 		return () => {
-			eventBus.remove('setLastHorizontalAnimation', setAnimation);
+			eventBus.remove(`setLastHorizontalAnimation-${index}`, setAnimation);
 		};
 	}, []);
 

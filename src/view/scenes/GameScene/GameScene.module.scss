@@ -1,0 +1,10 @@
+@use '/styles/abstracts/functions' as *;
+
+.scene {
+  padding: var(--side-offset);
+  height: 100vh;
+  & > div {
+    width: 100%;
+    height: auto;
+  }
+}

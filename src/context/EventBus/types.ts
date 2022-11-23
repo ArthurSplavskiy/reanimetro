@@ -2,4 +2,5 @@ export type tEventBusActions =
 	| 'preloaderAnimationEnd'
 	| 'reanimationStart'
 	| 'setFullCharacter'
-	| 'setLastHorizontalAnimation';
+	| 'setLastHorizontalAnimation-1'
+	| 'setLastHorizontalAnimation-2';

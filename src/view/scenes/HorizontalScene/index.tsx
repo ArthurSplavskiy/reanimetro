@@ -8,13 +8,14 @@ import {SIDE_OFFSET} from '@misc/constants';
 import {eventBus} from '@context/EventBus/EventBus';
 
 interface Props {
+	index: 1 | 2;
 	title: 'type1' | 'type2';
 	text?: string | string[];
 	tips?: string[];
 	scene?: any;
 }
 
-export const HorizontalSection: FC<Props> = ({title, text, scene, tips}) => {
+export const HorizontalScene: FC<Props> = ({title, text, scene, tips, index}) => {
 	const [startSectionAnimation, setStartSectionAnimation] = useState(false);
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ export const HorizontalSection: FC<Props> = ({title, text, scene, tips}) => {
 				duration: 5
 			});
 			timeline.current.call(_ => {
-				eventBus.dispatch('setLastHorizontalAnimation');
+				eventBus.dispatch(`setLastHorizontalAnimation-${index}`);
 			});
 		}
 	}, []);
@@ -72,6 +73,7 @@ export const HorizontalSection: FC<Props> = ({title, text, scene, tips}) => {
 					text={text}
 				/>
 				<MediaContent
+					index={index}
 					scene={scene}
 					tips={tips}
 				/>
