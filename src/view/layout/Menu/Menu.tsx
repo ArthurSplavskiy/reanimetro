@@ -4,6 +4,7 @@ import cn from 'classnames';
 import styles from './Menu.module.scss';
 import {useTranslate} from '@api/useTranslate';
 import {useBrowser} from '@hooks/useBrowser';
+import Link from 'next/link';
 
 export const Menu = ({open, onClose, animate}: IMenu): JSX.Element => {
 	const menuLinksText = useTranslate<string[]>('menu');
@@ -28,17 +29,21 @@ export const Menu = ({open, onClose, animate}: IMenu): JSX.Element => {
 				<ul className={styles.MenuList}>
 					{menuLinksText?.map((link, id) => (
 						<li key={id}>
-							{isBrowser && (
-								<SplitText
-									className={cn(styles.MenuRevealText, 'split-text', {
-										reveal: animate,
-										close: open
-									})}
-									style={{animationDelay: linksDalay(id)}}
-								>
-									{link}
-								</SplitText>
-							)}
+							<Link href="/game">
+								<a>
+									{isBrowser && (
+										<SplitText
+											className={cn(styles.MenuRevealText, 'split-text', {
+												reveal: animate,
+												close: open
+											})}
+											style={{animationDelay: linksDalay(id)}}
+										>
+											{link}
+										</SplitText>
+									)}
+								</a>
+							</Link>
 						</li>
 					))}
 				</ul>

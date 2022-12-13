@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-$z-indexes: ('noise', 'header', 'menuBtn', 'menu', 'startSceneTips');
+$z-indexes: ('noise', 'header', 'menuBtn', 'menu', 'startSceneTips', 'bottomPanel');
 $defaultFontSize: 16;
 
 @function z($name) {

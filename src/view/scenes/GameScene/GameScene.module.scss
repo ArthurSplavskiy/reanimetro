@@ -8,3 +8,17 @@
     height: auto;
   }
 }
+
+.text1, .text2 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  position: relative;
+}
+.text1 {
+  top: 10%;
+}
+.text2 {
+  bottom: 8%;
+}

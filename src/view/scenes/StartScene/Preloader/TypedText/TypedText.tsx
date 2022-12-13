@@ -1,7 +1,7 @@
 import {ReactNode, useEffect, useState} from 'react';
 import {ITypedTextProps} from './TypedText.props';
 
-export const TypedText = ({className, children, ...props}: ITypedTextProps) => {
+export const TypedText = ({className, children, speed = 55, ...props}: ITypedTextProps) => {
 	const strArr = children.split('');
 	const [text, setText] = useState<string[]>([strArr[0]]);
 
@@ -14,7 +14,7 @@ export const TypedText = ({className, children, ...props}: ITypedTextProps) => {
 			} else {
 				clearInterval(interval);
 			}
-		}, 55);
+		}, speed);
 		return interval;
 	};
 

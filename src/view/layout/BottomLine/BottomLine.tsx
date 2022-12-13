@@ -7,8 +7,10 @@ import {useTranslate} from '@api/useTranslate';
 import {SplitText} from '@cyriacbr/react-split-text';
 import {eventBus} from '@context/EventBus/EventBus';
 import {useBrowser} from '@hooks/useBrowser';
+import {useRouter} from 'next/router';
 
 export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element => {
+	const router = useRouter();
 	const [switchIsOpen, setSwitchIsOpen] = useState(false);
 	const [show, setShow] = useState(false);
 	const {language, setLanguage} = useLanguage();
@@ -43,6 +45,12 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 			eventBus.remove('preloaderAnimationEnd', handleShow);
 		};
 	}, []);
+
+	useEffect(() => {
+		if (router.asPath === '/game') {
+			handleShow();
+		}
+	}, [router]);
 
 	return (
 		<div

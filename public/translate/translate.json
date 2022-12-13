@@ -25,7 +25,10 @@
 			"Жінки рідше отримують СЛР від сторонніх осіб, ніж чоловіки",
 			"Кожних 45 секунд у країнах Європи зупиняється чиєсь серце",
 			"Лише 3% очевидців без медичної освіти вміють надавати домедичну допомогу"
-		]
+		],
+		"gameSceneText1": "Час спливає - врятуй мене!",
+		"gameSceneText2": "Інтерактивна гра етапів реанімації",
+		"gameStartText": "Чоловічок Б лежить. Чоловічок А нахилившись запитує у чоловічка Б «Агов! З вами все добре? Потрібна допомога ?». Чоловічок Б не відповідає. На задньому плані видно групу людей, серед них виділяється дівчина в рожевій кофтинці (далі дівчина В) "
 	},
 	{
 		"locale": "en",
@@ -53,6 +56,9 @@
 			"Women are less likely to be resuscitated from bystanders than men",
 			"Every 45 seconds, a human heart stops in European countries",
 			"Only 3% of eyewitnesses without medical education are able to provide first aid"
-		]
+		],
+		"gameSceneText1": "Time is running out - save me!",
+		"gameSceneText2": "Interactive game of resuscitation steps",
+		"gameStartText": "I am your heart Man B is lying down. Man A leans down and asks man B, «Hey! Are you OK? Need help?» Man B does not respond. There are a group of people in the background, a girl in a pink blouse (hereafter girl B) stands out among them."
 	}
 ]

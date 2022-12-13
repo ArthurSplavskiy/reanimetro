@@ -9,6 +9,7 @@
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+	z-index: z('bottomPanel');
 }
 
 .BottomLang {

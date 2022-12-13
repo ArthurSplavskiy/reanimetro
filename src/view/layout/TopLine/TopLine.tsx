@@ -8,8 +8,10 @@ import {SplitText} from '@cyriacbr/react-split-text';
 import {useTranslate} from '@api/useTranslate';
 import {eventBus} from '@context/EventBus/EventBus';
 import {useBrowser} from '@hooks/useBrowser';
+import {useRouter} from 'next/router';
 
 export const TopLine = ({className, ...props}: TopLineProps): JSX.Element => {
+	const router = useRouter();
 	const [soundOn, setSoundOn] = useState(false);
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	const [menuTransitionStart, setMenuTransitionStart] = useState(false);
@@ -53,6 +55,12 @@ export const TopLine = ({className, ...props}: TopLineProps): JSX.Element => {
 			eventBus.remove('preloaderAnimationEnd', handleShow);
 		};
 	}, []);
+
+	useEffect(() => {
+		if (router.asPath === '/game') {
+			handleShow();
+		}
+	}, [router]);
 
 	return (
 		<>

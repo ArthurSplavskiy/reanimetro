@@ -1,0 +1,52 @@
+@use '/styles/abstracts/functions' as *;
+
+.content {
+  padding: rem(132) var(--side-offset) rem(64) var(--side-offset);
+  height: 100vh;
+}
+
+.startText {
+  max-width: rem(536);
+  height: rem(78);
+  font-size: rem(20);
+  span {
+    display: inline-block;
+  }
+}
+
+.startTextAnimate {
+  span {
+    display: inline-block;
+    animation: startTextAnimationOut 1s forwards;
+  }
+}
+
+@keyframes startTextAnimationOut {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.sceneBg {
+  position: relative;
+  height: 100%;
+}
+
+.sceneBgImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sceneOverlay {
+  position: fixed;
+  inset: 0 0 0 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
