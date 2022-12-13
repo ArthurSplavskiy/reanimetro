@@ -9,6 +9,7 @@ import {mouseEnterHandler, mouseLeaveHandler, mouseMoveHandler} from '@misc/curs
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import {offCursorElements} from '@misc/offCursorElements';
+import SmoothScroll from '@misc/smoothScroll';
 
 React.useLayoutEffect = React.useEffect;
 
@@ -30,7 +31,12 @@ const Layout = ({children}: LayoutProps): JSX.Element => {
 				tabIndex={0}
 				role="main"
 			>
-				{children}
+				<div
+					id="scroll-viewport"
+					data-scroll
+				>
+					{children}
+				</div>
 			</main>
 			<BottomLine className={styles.BottomLine} />
 			<div className="noise"></div>
