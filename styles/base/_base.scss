@@ -40,7 +40,7 @@
 	}
 }
 
-@media(any-hover: none) {
+@media (any-hover: none) {
 	.click-cursor {
 		display: none;
 	}
@@ -51,14 +51,14 @@
 }
 
 .visually-hidden {
-	opacity: 0!important;
-	visibility: hidden!important;
-	pointer-events: none!important;
+	opacity: 0 !important;
+	visibility: hidden !important;
+	pointer-events: none !important;
 }
 
 button {
 	&:active {
-		transform: scale(0.97)!important;
+		transform: scale(0.97) !important;
 	}
 }
 
@@ -185,3 +185,21 @@ button {
 	}
 }
 
+#scroll-viewport {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.scrollbar-track {
+	background: transparent !important;
+	width: 4px !important;
+}
+
+.scrollbar-thumb {
+	background: var(--red) !important;
+	border-radius: 0 !important;
+}

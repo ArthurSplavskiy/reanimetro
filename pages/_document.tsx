@@ -28,7 +28,6 @@ class MyDocument extends Document {
 				</Head>
 				<body>
 					<Main />
-					<script src="/scripts/ScrollSmoother.min.js"></script>
 					<NextScript />
 				</body>
 			</Html>
