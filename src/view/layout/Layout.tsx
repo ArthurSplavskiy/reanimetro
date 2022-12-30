@@ -9,7 +9,7 @@ import {mouseEnterHandler, mouseLeaveHandler, mouseMoveHandler} from '@misc/curs
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import {offCursorElements} from '@misc/offCursorElements';
-import SmoothScroll from '@misc/smoothScroll';
+import classNames from 'classnames';
 
 React.useLayoutEffect = React.useEffect;
 
@@ -20,23 +20,18 @@ const Layout = ({children}: LayoutProps): JSX.Element => {
 	}, []);
 	return (
 		<div
-			className={styles.wrapper}
+			className={classNames(styles.wrapper)}
 			onMouseMove={e => mouseMoveHandler(e)}
 			onMouseLeave={mouseLeaveHandler}
 			onMouseEnter={mouseEnterHandler}
 		>
 			<TopLine className={styles.TopLine} />
 			<main
-				className={styles.main}
+				className={classNames(styles.main, 'layout')}
 				tabIndex={0}
 				role="main"
 			>
-				<div
-					id="scroll-viewport"
-					data-scroll
-				>
-					{children}
-				</div>
+				{children}
 			</main>
 			<BottomLine className={styles.BottomLine} />
 			<div className="noise"></div>

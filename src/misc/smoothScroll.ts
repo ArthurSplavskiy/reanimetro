@@ -38,6 +38,9 @@ const SmoothScroll = () => {
 		}
 	});
 	bodyScrollbar.addListener(ScrollTrigger.update);
+	// bodyScrollbar.addListener(() => {
+	// 	ScrollTrigger.refresh();
+	// });
 
 	return bodyScrollbar;
 };

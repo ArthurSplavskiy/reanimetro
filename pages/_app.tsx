@@ -1,3 +1,4 @@
+import {PageTransition} from '@components/PageTransition';
 import {AppProps} from 'next/app';
 import Head from 'next/head';
 import '../styles/main.scss';
@@ -14,6 +15,7 @@ function MyApp({Component, pageProps}: AppProps): JSX.Element {
 				></meta>
 			</Head>
 			<Component {...pageProps} />
+			<PageTransition />
 		</>
 	);
 }

@@ -1,52 +1,121 @@
 @use '/styles/abstracts/functions' as *;
 
 .content {
-  padding: rem(132) var(--side-offset) rem(64) var(--side-offset);
-  height: 100vh;
+	padding: rem(132) var(--side-offset) rem(64) var(--side-offset);
+	height: 100vh;
 }
 
 .startText {
-  max-width: rem(536);
-  height: rem(78);
-  font-size: rem(20);
-  span {
-    display: inline-block;
-  }
+	max-width: rem(536);
+	height: rem(78);
+	font-size: rem(20);
+	span {
+		display: inline-block;
+	}
 }
 
 .startTextAnimate {
-  span {
-    display: inline-block;
-    animation: startTextAnimationOut 1s forwards;
-  }
+	span {
+		display: inline-block;
+		animation: startTextAnimationOut 1s forwards;
+	}
 }
 
 @keyframes startTextAnimationOut {
-  from {
-    clip-path: inset(0 0 0 0);
-  }
-  to {
-    clip-path: inset(0 0 100% 0);
-    transform: translateY(100%);
-    opacity: 0;
-  }
+	from {
+		clip-path: inset(0 0 0 0);
+	}
+	to {
+		clip-path: inset(0 0 100% 0);
+		transform: translateY(100%);
+		opacity: 0;
+	}
 }
 
 .sceneBg {
-  position: relative;
-  height: 100%;
+	position: relative;
+	height: 100%;
 }
 
 .sceneBgImage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.sceneGame {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	padding: 8.25rem var(--side-offset) 4rem var(--side-offset);
+}
+
+.title {
+	font-weight: 400;
+	font-size: 42px;
+	line-height: 120%;
+	text-align: center;
+	margin-bottom: 32px;
+	opacity: 0;
+	transition: var(--transition);
+	transform: translateY(20px);
 }
 
 .sceneOverlay {
-  position: fixed;
-  inset: 0 0 0 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+	position: fixed;
+	inset: 0 0 0 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 1;
+	pointer-events: none;
+	transition: var(--transition);
+	opacity: 0;
+}
+
+.sceneOverlayShow {
+	opacity: 1;
+}
+
+.gameBtns {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 24px;
+}
+
+.gameBtn {
+	width: 343px;
+	padding: 12px 0;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 162%;
+	color: white;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(2px);
+	border-radius: 10px;
+	transition: var(--transition);
+	opacity: 0;
+	transform: translateY(20px);
+	&:hover {
+		background: rgba(255, 255, 255, 0.4);
+	}
+}
+
+.isTrue {
+	background: #036a01;
+}
+.isFalse {
+	background: #6a0101;
+}
+.freeze {
+	pointer-events: none;
+}
+.freezeEnd {
+	pointer-events: none;
 }

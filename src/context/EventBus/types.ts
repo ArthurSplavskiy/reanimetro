@@ -3,4 +3,5 @@ export type tEventBusActions =
 	| 'reanimationStart'
 	| 'setFullCharacter'
 	| 'setLastHorizontalAnimation-1'
-	| 'setLastHorizontalAnimation-2';
+	| 'setLastHorizontalAnimation-2'
+	| 'pageTransition';

@@ -20,6 +20,7 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 
 	const localeName = useTranslate<string[]>('localeName');
 	const scrollIndicator = useTranslate<string>('scrollIndicator');
+	const exitIndicator = useTranslate<string>('exit');
 
 	const changeLanguage = (e: MouseEvent<HTMLButtonElement>) => {
 		const target = e.target as HTMLButtonElement;
@@ -29,6 +30,10 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 
 	const handleShow = () => {
 		setShow(true);
+	};
+
+	const handleExit = () => {
+		eventBus.dispatch('pageTransition', {route: '/'});
 	};
 
 	useEffect(() => {
@@ -78,7 +83,18 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 				</div>
 			</div>
 			<div className={styles.BottomLineScroll}>
-				{isBrowser && (
+				{router.asPath === '/game' && isBrowser && (
+					<span onClick={handleExit}>
+						<SplitText
+							className={cn(styles.MenuRevealText, 'split-text', 'firstShow', {
+								reveal: show
+							})}
+						>
+							{exitIndicator}
+						</SplitText>
+					</span>
+				)}
+				{isBrowser && router.asPath !== '/game' && (
 					<SplitText
 						className={cn(styles.MenuRevealText, 'split-text', 'firstShow', {
 							reveal: scrollable
@@ -87,7 +103,6 @@ export const BottomLine = ({className, ...props}: BottomLineProps): JSX.Element 
 						{scrollIndicator}
 					</SplitText>
 				)}
-				{/*<div>{scrollIndicator}</div>*/}
 			</div>
 		</div>
 	);

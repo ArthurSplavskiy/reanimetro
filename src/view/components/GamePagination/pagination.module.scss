@@ -1,0 +1,22 @@
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 28px;
+	background: #006f8f;
+	border: 2px solid #006f8f;
+	border-radius: 33px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 142%;
+	color: white;
+	margin-bottom: 16px;
+	opacity: 0;
+	transform: scale(0);
+	transition: var(--transition);
+}
+
+.total {
+	opacity: 0.5;
+}

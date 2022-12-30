@@ -1,0 +1,26 @@
+@use '/styles/abstracts/functions' as *;
+
+.pageTransition {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(
+		180deg,
+		#dc4d56 0%,
+		#369fb6 100%
+	); // linear-gradient(180deg, #dc4d56 0%, #369fb6 100%) // #F6EED0 // #006f8f
+	z-index: z('pageTransition');
+	transition: var(--transition);
+	transform: translateY(100%);
+	border-top: 1px solid var(--red);
+	border-bottom: 1px solid var(--blue);
+}
+
+.transitionStart {
+	transform: translateY(0);
+}
+
+.transitionEnd {
+	transform: translateY(-100%);
+}

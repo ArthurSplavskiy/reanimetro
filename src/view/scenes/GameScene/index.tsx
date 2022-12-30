@@ -8,10 +8,13 @@ import cn from 'classnames';
 import {SplitText} from '@cyriacbr/react-split-text';
 import {useBrowser} from '@hooks/useBrowser';
 import {useTranslate} from '@api/useTranslate';
-import {useRouter} from 'next/router';
+import {eventBus} from '@context/EventBus/EventBus';
 
-export const GameScene: FC = () => {
-	const router = useRouter();
+interface Props {
+	slide: number;
+}
+
+export const GameScene: FC<Props> = ({slide}) => {
 	const [sceneLottie] = useState(GameLottie);
 	const [animationPlay, setAnimationPlay] = useState(false);
 	const sceneRef = useRef<HTMLDivElement>(null);
@@ -37,7 +40,7 @@ export const GameScene: FC = () => {
 			const firstID = '[transform="matrix(0.8187000155448914,0,0,0.22153045237064362,640,538.5)"]';
 			const secondID = '[mask="url(#__lottie_element_131)"]';
 			if (e.target.closest(firstID) || e.target.closest(secondID)) {
-				router.push('/game');
+				eventBus.dispatch('pageTransition', {route: '/game'});
 			}
 		};
 
@@ -63,6 +66,7 @@ export const GameScene: FC = () => {
 		<section
 			className={styles.scene}
 			ref={sceneRef}
+			data-slide={slide}
 		>
 			{isBrowser && (
 				<SplitText

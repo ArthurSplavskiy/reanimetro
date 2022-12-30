@@ -203,3 +203,31 @@ button {
 	background: var(--red) !important;
 	border-radius: 0 !important;
 }
+
+.scaleIn {
+	opacity: 1 !important;
+	transform: scale(1) !important;
+}
+
+.scaleOut {
+	opacity: 0;
+	transform: scale(0);
+}
+
+.fadeIn {
+	opacity: 1 !important;
+	transform: translate(0) !important;
+}
+
+.fadeOut {
+	opacity: 0;
+	transform: translate(-20px);
+}
+
+.layout {
+	transition: all 2.65s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.layout.page-transition-start {
+	transform: translateY(-20%);
+	opacity: 0;
+}

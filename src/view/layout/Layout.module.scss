@@ -5,3 +5,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 }
+
+.BottomLine {
+	z-index: z('mainContent');
+}

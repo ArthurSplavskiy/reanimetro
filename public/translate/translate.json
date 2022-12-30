@@ -1,6 +1,7 @@
 [
 	{
 		"locale": "ua",
+		"exit": "Вихід",
 		"localeName": ["Укр", "Анг"],
 		"preloaderMessage": "Кожних 45 секунд у країнах % Європи зупиняється людське % серце",
 		"menu": [
@@ -32,6 +33,7 @@
 	},
 	{
 		"locale": "en",
+		"exit": "Exit",
 		"localeName": ["Eng", "Ukr"],
 		"preloaderMessage": " Every 45 seconds, a human % heart stops in European % countries",
 		"menu": [

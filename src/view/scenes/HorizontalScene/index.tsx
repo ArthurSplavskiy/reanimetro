@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import {MediaContent} from '@scenes/HorizontalScene/MediaContent';
 import {SIDE_OFFSET} from '@misc/constants';
 import {eventBus} from '@context/EventBus/EventBus';
+import {useScrollable} from '@context/app.context';
 
 interface Props {
 	index: 1 | 2;
@@ -13,13 +14,16 @@ interface Props {
 	text?: string | string[];
 	tips?: string[];
 	scene?: any;
+	slide: number;
+	horizontalSlide: boolean;
 }
 
-export const HorizontalScene: FC<Props> = ({title, text, scene, tips, index}) => {
+export const HorizontalScene: FC<Props> = ({title, text, scene, tips, index, horizontalSlide}) => {
 	const [startSectionAnimation, setStartSectionAnimation] = useState(false);
-	const sectionRef = useRef<HTMLDivElement>(null);
+	const sectionRef = useRef<any>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const timeline = useRef(gsap.timeline());
+	const {scrollable, setScrollable} = useScrollable();
 
 	const createScrollTrigger = useCallback(() => {
 		ScrollTrigger.create({
@@ -50,6 +54,8 @@ export const HorizontalScene: FC<Props> = ({title, text, scene, tips, index}) =>
 			});
 			timeline.current.call(_ => {
 				eventBus.dispatch(`setLastHorizontalAnimation-${index}`);
+				setScrollable?.(false);
+				setTimeout(() => setScrollable?.(true), 1000);
 			});
 		}
 	}, []);
@@ -63,6 +69,7 @@ export const HorizontalScene: FC<Props> = ({title, text, scene, tips, index}) =>
 		<section
 			ref={sectionRef}
 			className={styles.section}
+			data-horizontal={horizontalSlide}
 		>
 			<div
 				ref={scrollerRef}

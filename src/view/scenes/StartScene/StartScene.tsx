@@ -4,9 +4,16 @@ import styles from './StartScene.module.scss';
 import {Tips} from './Tips/Tips';
 import cn from 'classnames';
 
-export const StartScene = () => {
+interface Props {
+	slide: number;
+}
+
+export const StartScene: React.FC<Props> = ({slide}) => {
 	return (
-		<div className={cn(styles.scene, 'start-scene')}>
+		<div
+			className={cn(styles.scene, 'start-scene')}
+			data-slide={slide}
+		>
 			<Tips />
 			<Reanimation />
 			<Character />

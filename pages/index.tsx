@@ -10,15 +10,26 @@ function Home() {
 	const firstHorizontalSectionTips = useTranslate<string[]>('firstHorizontalSectionTips');
 	return (
 		<>
-			<StartScene />
+			<StartScene slide={1} />
 			<HorizontalScene
 				index={1}
 				title="type1"
 				text={firstHorizontalSectionText}
 				tips={firstHorizontalSectionTips}
 				scene={horizontalScene1}
+				slide={2}
+				horizontalSlide={true}
 			/>
-			<GameScene />
+			<GameScene slide={3} />
+			<HorizontalScene
+				index={2}
+				title="type1"
+				text={firstHorizontalSectionText}
+				tips={firstHorizontalSectionTips}
+				scene={horizontalScene1}
+				slide={4}
+				horizontalSlide
+			/>
 		</>
 	);
 }
